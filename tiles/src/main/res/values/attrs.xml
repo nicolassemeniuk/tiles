@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="StatusTile">
+    <attr name="stepText" format="string"/>
+    <attr name="titleText" format="string"/>
+    <attr name="contentText" format="string"/>
+    <attr name="type" format="string"/>
+  </declare-styleable>
+
+  <declare-styleable name="OptionTile">
+    <attr name="optionTitleText" format="string"/>
+    <attr name="optionContentText" format="string"/>
+  </declare-styleable>
+
+  <declare-styleable name="OptionTileSmall">
+    <attr name="optionSmallTitleText" format="string"/>
+  </declare-styleable>
+
+  <declare-styleable name="OptionExpandableTile">
+    <attr name="optionExpandableTitleText" format="string"/>
+    <attr name="optionExpandableContentText" format="string"/>
+    <attr name="optionExpandableContentSelectedText" format="string"/>
+    <attr name="optionExpandableTileHeightExpanded" format="integer"/>
+    <attr name="optionExpandableTileCanExpandAndCollapse" format="boolean"/>
+  </declare-styleable>
+
+
+</resources>

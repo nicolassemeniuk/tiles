@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       tools:orientation="horizontal"
+       tools:parentTag="FrameLayout">
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/main_container_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:background="@drawable/status_tile_white"
+    android:maxHeight="120dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/step_title_text_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="12dp"
+      android:textSize="12sp"
+      android:textStyle="bold"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Step 1"/>
+
+    <TextView
+      android:id="@+id/tile_title_text_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="16dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="16dp"
+      android:textSize="14sp"
+      android:textStyle="bold"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/step_title_text_view"
+      tools:ignore="RtlHardcoded"
+      tools:text="Tile Title"/>
+
+    <TextView
+      android:id="@+id/content_text_view"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="4dp"
+      android:ellipsize="end"
+      android:lines="3"
+      android:maxLines="4"
+      android:textSize="13sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/action_image_view"
+      app:layout_constraintTop_toBottomOf="@+id/tile_title_text_view"
+      app:layout_constraintVertical_bias="0.0"
+      tools:text="Some words can be written here to give the user a quick peek at what’s happening. And something else"/>
+
+    <ImageView
+      android:id="@+id/action_image_view"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginRight="16dp"
+      android:minHeight="32dp"
+      android:minWidth="32dp"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintDimensionRatio=""
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/ic_edit_black"
+      tools:ignore="ContentDescription"/>
+
+
+  </android.support.constraint.ConstraintLayout>
+
+  <FrameLayout
+    android:id="@+id/main_container_disabled_frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="3dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="0dp"
+    android:background="@android:color/darker_gray"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+  </FrameLayout>
+
+</merge>

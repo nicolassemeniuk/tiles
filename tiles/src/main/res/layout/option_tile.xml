@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       tools:orientation="horizontal"
+       tools:parentTag="FrameLayout">
+
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/main_container_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/option_tile_white"
+    android:maxHeight="120dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/tile_title_text_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="16dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="16dp"
+      android:textColor="@android:color/black"
+      android:textSize="14sp"
+      android:textStyle="bold"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="RtlHardcoded"
+      tools:text="Title for the Tile"/>
+
+    <TextView
+      android:id="@+id/content_text_view"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="4dp"
+      android:ellipsize="end"
+      android:lineSpacingExtra="4sp"
+      android:lines="2"
+      android:maxLines="2"
+      android:textColor="@android:color/black"
+      android:textSize="13sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/right_arrow_image_view"
+      app:layout_constraintTop_toBottomOf="@+id/tile_title_text_view"
+      app:layout_constraintVertical_bias="0.0"
+      tools:text="Content for the tile"/>
+
+    <ImageView
+      android:id="@+id/right_arrow_image_view"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_chevron_right_black"/>
+
+    <View
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginBottom="0dp"
+      android:layout_marginLeft="0dp"
+      android:layout_marginRight="0dp"
+      android:background="@android:color/darker_gray"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+</merge>

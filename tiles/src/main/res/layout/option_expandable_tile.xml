@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:animateLayoutChanges="true">
+
+  <com.stubhub.sell.views.OptionTile
+    android:id="@+id/option_tile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"/>
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/options_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="150dp"/>
+
+</LinearLayout>

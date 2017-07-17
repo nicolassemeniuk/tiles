@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/main_container_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+  <com.stubhub.core.util.text.StubHubTextView
+    android:id="@+id/option_text_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_toStartOf="@+id/option_check_image_view"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    tools:text="Option 1 that is really looooooooooooooooooooong and should wrap on the UI"/>
+
+  <ImageView
+    android:id="@+id/option_check_image_view"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_alignParentEnd="true"
+    android:layout_centerVertical="true"
+    android:layout_marginEnd="8dp"
+    app:srcCompat="@drawable/ic_check_black"/>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:layout_below="@+id/option_text_view"
+    android:background="@android:color/white"/>
+
+</RelativeLayout>
