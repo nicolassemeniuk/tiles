@@ -71,11 +71,11 @@ public class StatusTile extends FrameLayout {
   private void init(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.status_tile, this);
 
-    mStepTitleTextView = findViewById(R.id.step_title_text_view);
-    mTileTitleTextView = findViewById(R.id.tile_title_text_view);
-    mContentTextView = findViewById(R.id.content_text_view);
-    mActionImageView = findViewById(R.id.action_image_view);
-    mMainContainerDisabledFrameLayout = findViewById(R.id.main_container_disabled_frame_layout);
+    mStepTitleTextView = (TextView) findViewById(R.id.step_title_text_view);
+    mTileTitleTextView = (TextView) findViewById(R.id.tile_title_text_view);
+    mContentTextView = (TextView) findViewById(R.id.content_text_view);
+    mActionImageView = (ImageView) findViewById(R.id.action_image_view);
+    mMainContainerDisabledFrameLayout = (FrameLayout) findViewById(R.id.main_container_disabled_frame_layout);
 
     TypedArray a = getContext().getTheme().obtainStyledAttributes(
         attrs,

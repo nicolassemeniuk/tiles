@@ -48,9 +48,9 @@ public class OptionTile extends FrameLayout {
   private void init(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.option_tile, this);
 
-    mTileTitleTextView = findViewById(R.id.tile_title_text_view);
-    mContentTextView = findViewById(R.id.content_text_view);
-    mRightArrowImageView = findViewById(R.id.right_arrow_image_view);
+    mTileTitleTextView = (TextView) findViewById(R.id.tile_title_text_view);
+    mContentTextView = (TextView) findViewById(R.id.content_text_view);
+    mRightArrowImageView = (ImageView) findViewById(R.id.right_arrow_image_view);
 
     TypedArray a = getContext().getTheme().obtainStyledAttributes(
         attrs,

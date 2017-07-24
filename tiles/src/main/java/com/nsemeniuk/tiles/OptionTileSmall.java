@@ -48,8 +48,8 @@ public class OptionTileSmall extends FrameLayout {
   private void init(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.option_tile_small, this);
 
-    mTitleTextView = findViewById(R.id.tile_text_view);
-    mRightArrowImageView = findViewById(R.id.right_arrow_image_view);
+    mTitleTextView = (TextView) findViewById(R.id.tile_text_view);
+    mRightArrowImageView = (ImageView) findViewById(R.id.right_arrow_image_view);
 
     TypedArray a = getContext().getTheme().obtainStyledAttributes(
         attrs,

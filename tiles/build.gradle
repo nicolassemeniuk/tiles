@@ -1,19 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion "26.0.0"
+  compileSdkVersion 25
+  buildToolsVersion "25.0.2"
 
   defaultConfig {
     minSdkVersion 17
-    targetSdkVersion 26
-    versionCode 1
-    versionName "1.0"
-
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+    targetSdkVersion 25
   }
   buildTypes {
+    debug {
+      minifyEnabled false
+    }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -27,8 +25,36 @@ android {
 }
 
 dependencies {
-  compile 'com.android.support:appcompat-v7:26.+'
-  compile 'com.android.support:recyclerview-v7:26.0.+'
+  compile 'com.android.support:appcompat-v7:25.3.1'
+  compile 'com.android.support:recyclerview-v7:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}
+
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'tiles'
+
+  publishedGroupId = 'com.nsemeniuk.tiles'
+  libraryName = 'Tiles'
+  artifact = 'tiles'
+
+  libraryDescription = 'Tiles example'
+
+  siteUrl = 'https://github.com/nicolassemeniuk/tiles'
+  gitUrl = 'https://github.com/nicolassemeniuk/tiles.git'
+
+  libraryVersion = '0.0.1'
+
+  developerId = 'nsemeniuk'
+  developerName = 'Nicolas Semeniuk'
+  developerEmail = 'nicolas.semeniuk@gmail.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+
+  // Place it at the end of the file
+  apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+  apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 
 }
