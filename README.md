@@ -13,4 +13,4 @@ On this project you will find 4 different choices for displaying options:
 
 4- StatusTile, a tile that has different states and can have a step, a title and a content.
 
-![Preview](http://i.imgur.com/YQfwGIOm.png)
+![Preview](http://i.imgur.com/YQfwGIOl.png)
