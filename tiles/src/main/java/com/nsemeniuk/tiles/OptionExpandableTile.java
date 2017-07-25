@@ -95,11 +95,11 @@ public class OptionExpandableTile extends FrameLayout implements OptionExpandabl
         0, 0);
 
     try {
-      mTitle = a.getString(R.styleable.OptionExpandableTile_optionExpandableTitleText);
-      mContent = a.getString(R.styleable.OptionExpandableTile_optionExpandableContentText);
-      mSelectedContent = a.getString(R.styleable.OptionExpandableTile_optionExpandableContentSelectedText);
-      mMaxHeightExpanded = a.getInt(R.styleable.OptionExpandableTile_optionExpandableTileHeightExpanded, MAX_HEIGHT_EXPANDED);
-      mCanExpandAndCollapse = a.getBoolean(R.styleable.OptionExpandableTile_optionExpandableTileCanExpandAndCollapse, true);
+      mTitle = a.getString(R.styleable.OptionExpandableTile_optionExpandableTile_titleText);
+      mContent = a.getString(R.styleable.OptionExpandableTile_optionExpandableTile_contentText);
+      mSelectedContent = a.getString(R.styleable.OptionExpandableTile_optionExpandableTile_contentSelectedText);
+      mMaxHeightExpanded = a.getInt(R.styleable.OptionExpandableTile_optionExpandableTile_heightExpanded, MAX_HEIGHT_EXPANDED);
+      mCanExpandAndCollapse = a.getBoolean(R.styleable.OptionExpandableTile_optionExpandableTile_canExpandAndCollapse, true);
       if (mTitle != null) {
         mOptionTile.setTitle(mTitle);
       }

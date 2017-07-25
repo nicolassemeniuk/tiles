@@ -58,7 +58,7 @@ public class OptionTileSmall extends FrameLayout {
 
     try {
 
-      mTitleTextView.setText(a.getString(R.styleable.OptionTileSmall_optionSmallTitleText));
+      mTitleTextView.setText(a.getString(R.styleable.OptionTileSmall_optionTileSmall_titleText));
 
     } finally {
       a.recycle();

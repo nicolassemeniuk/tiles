@@ -59,8 +59,8 @@ public class OptionTile extends FrameLayout {
 
     try {
 
-      mTileTitleTextView.setText(a.getString(R.styleable.OptionTile_optionTitleText));
-      mContentTextView.setText(a.getString(R.styleable.OptionTile_optionContentText));
+      mTileTitleTextView.setText(a.getString(R.styleable.OptionTile_optionTile_titleText));
+      mContentTextView.setText(a.getString(R.styleable.OptionTile_optionTile_contentText));
 
     } finally {
       a.recycle();

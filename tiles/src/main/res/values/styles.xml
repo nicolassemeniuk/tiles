@@ -6,6 +6,10 @@
     <!-- colorPrimaryDark is used for the status bar -->
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="statusTile_stepTextColor">@color/colorAccent</item>
+    <item name="statusTile_titleTextColor">@color/colorPrimary</item>
+    <item name="statusTile_contentTextColor">@color/colorPrimary</item>
   </style>
 
 </resources>

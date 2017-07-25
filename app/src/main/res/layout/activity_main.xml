@@ -27,8 +27,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <com.nsemeniuk.tiles.StatusTile
+      android:id="@+id/tile1"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:statusTile_contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis egestas odio, vel ullamcorper sem finibus vel."
+      app:statusTile_stepText="Step 1"
+      app:statusTile_titleText="Completed Title"
+      app:statusTile_type="completed"/>
+
+    <com.nsemeniuk.tiles.StatusTile
+      android:id="@+id/tile2"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="0dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tile1"
+      app:statusTile_contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis egestas odio, vel ullamcorper sem finibus vel."
+      app:statusTile_stepText="Step 2"
+      app:statusTile_titleText="Enabled Title"
+      app:statusTile_type="enabled"
+      tools:layout_editor_absoluteY="0dp"/>
+
+    <com.nsemeniuk.tiles.StatusTile
+      android:id="@+id/tile3"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tile2"
+      app:statusTile_contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis egestas odio, vel ullamcorper sem finibus vel."
+      app:statusTile_stepText="Step 2"
+      app:statusTile_titleText="Disabled Title"
+      app:statusTile_type="disabled"
+      tools:layout_editor_absoluteY="511dp"/>
+
+    <com.nsemeniuk.tiles.StatusTile
+      android:id="@+id/tile4"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tile3"
+      app:statusTile_contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis egestas odio, vel ullamcorper sem finibus vel."
+      app:statusTile_stepText="Step 2"
+      app:statusTile_titleText="Completed Disabled Title"
+      app:statusTile_type="completedDisabled"
+      tools:layout_editor_absoluteY="374dp"/>
+
   </android.support.constraint.ConstraintLayout>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="@dimen/fab_margin"
+    app:srcCompat="@android:drawable/ic_dialog_email"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

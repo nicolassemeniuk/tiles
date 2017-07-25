@@ -2,6 +2,7 @@ package com.nsemeniuk.tiles;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
@@ -19,11 +20,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.nsemeniuk.tiles.utils.VisualUtils;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by nandressemeniuk on 3/20/17.
+ * The status tile provides a view that has a:
+ * - Step Title
+ * - Title
+ * - Content
+ * - Icon
+ *
+ * It also has states with specific attributes and icons that can be configured:
+ * - Enabled
+ * - Disabled
+ * - Completed
+ * - Completed disabled
  */
 
 public class StatusTile extends FrameLayout {
@@ -38,11 +51,25 @@ public class StatusTile extends FrameLayout {
   public final static String STATUS_COMPLETED = "completed";
   public final static String STATUS_COMPLETED_DISABLED = "completedDisabled";
 
-  private TextView mStepTitleTextView;
-  private TextView mTileTitleTextView;
+  //Views
+  private TextView mStepTextView;
+  private TextView mTitleTextView;
   private TextView mContentTextView;
   private ImageView mActionImageView;
   private FrameLayout mMainContainerDisabledFrameLayout;
+  private View mDividerView;
+
+  //Colors
+  private int mStepTextColor;
+  private int mTitleTextColor;
+  private int mContentTextColor;
+  private int mStepTextColorDisabled;
+  private int mTitleTextColorDisabled;
+  private int mContentTextColorDisabled;
+
+  //States
+  private boolean mShowDividerView;
+
 
   @TileType
   String mType;
@@ -71,22 +98,37 @@ public class StatusTile extends FrameLayout {
   private void init(@Nullable AttributeSet attrs) {
     inflate(getContext(), R.layout.status_tile, this);
 
-    mStepTitleTextView = (TextView) findViewById(R.id.step_title_text_view);
-    mTileTitleTextView = (TextView) findViewById(R.id.tile_title_text_view);
+    mStepTextView = (TextView) findViewById(R.id.step_title_text_view);
+    mTitleTextView = (TextView) findViewById(R.id.tile_title_text_view);
     mContentTextView = (TextView) findViewById(R.id.content_text_view);
     mActionImageView = (ImageView) findViewById(R.id.action_image_view);
     mMainContainerDisabledFrameLayout = (FrameLayout) findViewById(R.id.main_container_disabled_frame_layout);
+    mDividerView = findViewById(R.id.divider_view);
 
-    TypedArray a = getContext().getTheme().obtainStyledAttributes(
+    TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(
         attrs,
         R.styleable.StatusTile,
         0, 0);
 
     try {
-      mStepTitleTextView.setText(a.getString(R.styleable.StatusTile_stepText));
-      mTileTitleTextView.setText(a.getString(R.styleable.StatusTile_titleText));
-      mContentTextView.setText(a.getString(R.styleable.StatusTile_contentText));
-      String type = a.getString(R.styleable.StatusTile_type);
+      mStepTextView.setText(typedArray.getString(R.styleable.StatusTile_statusTile_stepText));
+      mTitleTextView.setText(typedArray.getString(R.styleable.StatusTile_statusTile_titleText));
+      mContentTextView.setText(typedArray.getString(R.styleable.StatusTile_statusTile_contentText));
+      mStepTextColor = typedArray.getColor(R.styleable.StatusTile_statusTile_stepTextColor, VisualUtils.getThemeAccentColor(getContext()));
+      mTitleTextColor = typedArray.getColor(R.styleable.StatusTile_statusTile_titleTextColor, ContextCompat.getColor(getContext(), R.color.textPrimary));
+      mContentTextColor = typedArray.getColor(R.styleable.StatusTile_statusTile_contentTextColor, ContextCompat.getColor(getContext(), R.color.textPrimary));
+      mStepTextColorDisabled = typedArray.getColor(R.styleable.StatusTile_statusTile_stepTextColorDisabled, ContextCompat.getColor(getContext(), R.color.textPrimaryDisabled));
+      mTitleTextColorDisabled = typedArray.getColor(R.styleable.StatusTile_statusTile_titleTextColorDisabled, ContextCompat.getColor(getContext(), R.color.textPrimaryDisabled));
+      mContentTextColorDisabled = typedArray.getColor(R.styleable.StatusTile_statusTile_contentTextColorDisabled, ContextCompat.getColor(getContext(), R.color.textPrimaryDisabled));
+      mShowDividerView = typedArray.getBoolean(R.styleable.StatusTile_statusTile_showDivider, true);
+
+      if(mShowDividerView) {
+        mDividerView.setVisibility(View.VISIBLE);
+      } else {
+        mDividerView.setVisibility(View.GONE);
+      }
+
+      String type = typedArray.getString(R.styleable.StatusTile_statusTile_type);
 
       if(type != null) {
         switch(type) {
@@ -109,7 +151,7 @@ public class StatusTile extends FrameLayout {
       }
 
     } finally {
-      a.recycle();
+      typedArray.recycle();
     }
 
   }
@@ -131,27 +173,41 @@ public class StatusTile extends FrameLayout {
       switch(statusType) {
         case STATUS_ENABLED:
           mType = STATUS_ENABLED;
+          mStepTextView.setTextColor(mStepTextColor);
+          mTitleTextView.setTextColor(mTitleTextColor);
+          mContentTextView.setTextColor(mContentTextColor);
+
           mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
-          mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+          mStepTextView.setTextColor(mStepTextColor);
           drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
           break;
         case STATUS_DISABLED:
           mType = STATUS_DISABLED;
-          mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.darker_gray));
+          mStepTextView.setTextColor(mStepTextColorDisabled);
+          mTitleTextView.setTextColor(mTitleTextColorDisabled);
+          mContentTextView.setTextColor(mContentTextColorDisabled);
+
           mMainContainerDisabledFrameLayout.setVisibility(View.VISIBLE);
           drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
           drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.darker_gray), PorterDuff.Mode.SRC_ATOP);
           break;
         case STATUS_COMPLETED:
           mType = STATUS_COMPLETED;
-          mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+          mStepTextView.setTextColor(mStepTextColor);
+          mTitleTextView.setTextColor(mTitleTextColor);
+          mContentTextView.setTextColor(mContentTextColor);
+
           mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
           drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_check_black);
           drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark), PorterDuff.Mode.SRC_ATOP);
           break;
         case STATUS_COMPLETED_DISABLED:
           mType = STATUS_COMPLETED_DISABLED;
-          mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.darker_gray));
+
+          mStepTextView.setTextColor(mStepTextColor);
+          mTitleTextView.setTextColor(mTitleTextColor);
+          mContentTextView.setTextColor(mContentTextColor);
+
           mMainContainerDisabledFrameLayout.setVisibility(View.VISIBLE);
           drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_check_black);
           drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.darker_gray), PorterDuff.Mode.SRC_ATOP);
@@ -160,7 +216,11 @@ public class StatusTile extends FrameLayout {
           //Default view
           mType = STATUS_ENABLED;
           mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
-          mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+
+          mStepTextView.setTextColor(mStepTextColor);
+          mTitleTextView.setTextColor(mTitleTextColor);
+          mContentTextView.setTextColor(mContentTextColor);
+
           drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
           break;
       }
@@ -171,7 +231,11 @@ public class StatusTile extends FrameLayout {
 
       Drawable drawable;
       mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
-      mStepTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+
+      mStepTextView.setTextColor(mStepTextColor);
+      mTitleTextView.setTextColor(mTitleTextColor);
+      mContentTextView.setTextColor(mContentTextColor);
+
       drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
 
       //Set the drawable
@@ -203,7 +267,7 @@ public class StatusTile extends FrameLayout {
    * @param step int resource representing the text for the step of the tile.
    */
   public void setStep(@StringRes int step) {
-    mStepTitleTextView.setText(step);
+    mStepTextView.setText(step);
   }
 
   /**
@@ -212,7 +276,7 @@ public class StatusTile extends FrameLayout {
    * @param step a string representing the step of the tile.
    */
   public void setStep(@NonNull String step) {
-    mStepTitleTextView.setText(step);
+    mStepTextView.setText(step);
   }
 
   /**
@@ -221,7 +285,7 @@ public class StatusTile extends FrameLayout {
    * @param title int resource the text for the title of the tile.
    */
   public void setTitle(@StringRes int title) {
-    mTileTitleTextView.setText(title);
+    mTitleTextView.setText(title);
   }
 
   /**
@@ -230,7 +294,7 @@ public class StatusTile extends FrameLayout {
    * @param title a string representing the title of the tile.
    */
   public void setTitle(@NonNull String title) {
-    mTileTitleTextView.setText(title);
+    mTitleTextView.setText(title);
   }
 
   /**

@@ -2,27 +2,35 @@
 <resources>
 
   <declare-styleable name="StatusTile">
-    <attr name="stepText" format="string"/>
-    <attr name="titleText" format="string"/>
-    <attr name="contentText" format="string"/>
-    <attr name="type" format="string"/>
+    <attr name="statusTile_stepText" format="string"/>
+    <attr name="statusTile_titleText" format="string"/>
+    <attr name="statusTile_contentText" format="string"/>
+    <attr name="statusTile_type" format="string"/>
+    <attr name="statusTile_showDivider" format="boolean"/>
+    <attr name="statusTile_stepTextColor" format="color"/>
+    <attr name="statusTile_titleTextColor" format="color"/>
+    <attr name="statusTile_contentTextColor" format="color"/>
+    <attr name="statusTile_stepTextColorDisabled" format="color"/>
+    <attr name="statusTile_titleTextColorDisabled" format="color"/>
+    <attr name="statusTile_contentTextColorDisabled" format="color"/>
   </declare-styleable>
 
   <declare-styleable name="OptionTile">
-    <attr name="optionTitleText" format="string"/>
-    <attr name="optionContentText" format="string"/>
+    <attr name="optionTile_titleText" format="string"/>
+    <attr name="optionTile_contentText" format="string"/>
   </declare-styleable>
 
   <declare-styleable name="OptionTileSmall">
-    <attr name="optionSmallTitleText" format="string"/>
+    <attr name="optionTileSmall_titleText" format="string"/>
   </declare-styleable>
 
   <declare-styleable name="OptionExpandableTile">
-    <attr name="optionExpandableTitleText" format="string"/>
-    <attr name="optionExpandableContentText" format="string"/>
-    <attr name="optionExpandableContentSelectedText" format="string"/>
-    <attr name="optionExpandableTileHeightExpanded" format="integer"/>
-    <attr name="optionExpandableTileCanExpandAndCollapse" format="boolean"/>
+    <attr name="optionExpandableTile_titleText" format="string"/>
+    <attr name="optionExpandableTile_contentText" format="string"/>
+    <attr name="optionExpandableTile_contentSelectedText" format="string"/>
+    <attr name="optionExpandableTile_heightExpanded" format="integer"/>
+    <attr name="optionExpandableTile_canExpandAndCollapse" format="boolean"/>
+    <attr name="optionExpandableTile_titleTextColor" format="color"/>
   </declare-styleable>
 
 
