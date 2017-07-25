@@ -12,3 +12,6 @@ On this project you will find 4 different choices for displaying options:
 3- OptionExpandableTile, a version that contains a recyclerView and can be expanded to select different options.
 
 4- StatusTile, a tile that has different states and can have a step, a title and a content.
+
+![Image](http://imgur.com/a/QI4yb)
+
