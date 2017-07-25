@@ -39,7 +39,7 @@ completed, but it cannot be changed.
 
 You can see how they look below:
 
-![Preview](http://i.imgur.com/YQfwGIOl.png)
+![PreviewStatusTile](http://i.imgur.com/MqV2wsml.png)
 
 #### Usage
 
