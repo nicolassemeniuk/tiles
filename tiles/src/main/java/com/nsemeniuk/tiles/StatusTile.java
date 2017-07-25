@@ -70,6 +70,12 @@ public class StatusTile extends FrameLayout {
   //States
   private boolean mShowDividerView;
 
+  //Drawables
+  private int mEnabledIcon;
+  private int mDisabledIcon;
+  private int mCompletedIcon;
+  private int mCompletedDisabledIcon;
+
 
   @TileType
   String mType;
@@ -121,6 +127,11 @@ public class StatusTile extends FrameLayout {
       mTitleTextColorDisabled = typedArray.getColor(R.styleable.StatusTile_statusTile_titleTextColorDisabled, ContextCompat.getColor(getContext(), R.color.textPrimaryDisabled));
       mContentTextColorDisabled = typedArray.getColor(R.styleable.StatusTile_statusTile_contentTextColorDisabled, ContextCompat.getColor(getContext(), R.color.textPrimaryDisabled));
       mShowDividerView = typedArray.getBoolean(R.styleable.StatusTile_statusTile_showDivider, true);
+
+      mEnabledIcon = typedArray.getResourceId(R.styleable.StatusTile_statusTile_enabledIcon, R.drawable.ic_edit_black);
+      mDisabledIcon = typedArray.getResourceId(R.styleable.StatusTile_statusTile_disabledIcon, R.drawable.ic_edit_black);
+      mCompletedIcon = typedArray.getResourceId(R.styleable.StatusTile_statusTile_completedIcon, R.drawable.ic_check_black);
+      mCompletedDisabledIcon = typedArray.getResourceId(R.styleable.StatusTile_statusTile_completedIcon, R.drawable.ic_check_black);
 
       if(mShowDividerView) {
         mDividerView.setVisibility(View.VISIBLE);
@@ -178,8 +189,8 @@ public class StatusTile extends FrameLayout {
           mContentTextView.setTextColor(mContentTextColor);
 
           mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
-          mStepTextView.setTextColor(mStepTextColor);
-          drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
+
+          drawable = ContextCompat.getDrawable(getContext(), mEnabledIcon);
           break;
         case STATUS_DISABLED:
           mType = STATUS_DISABLED;
@@ -188,8 +199,8 @@ public class StatusTile extends FrameLayout {
           mContentTextView.setTextColor(mContentTextColorDisabled);
 
           mMainContainerDisabledFrameLayout.setVisibility(View.VISIBLE);
-          drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
-          drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.darker_gray), PorterDuff.Mode.SRC_ATOP);
+
+          drawable = ContextCompat.getDrawable(getContext(), mDisabledIcon);
           break;
         case STATUS_COMPLETED:
           mType = STATUS_COMPLETED;
@@ -198,8 +209,8 @@ public class StatusTile extends FrameLayout {
           mContentTextView.setTextColor(mContentTextColor);
 
           mMainContainerDisabledFrameLayout.setVisibility(View.GONE);
-          drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_check_black);
-          drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark), PorterDuff.Mode.SRC_ATOP);
+
+          drawable = ContextCompat.getDrawable(getContext(), mCompletedIcon);
           break;
         case STATUS_COMPLETED_DISABLED:
           mType = STATUS_COMPLETED_DISABLED;
@@ -209,8 +220,8 @@ public class StatusTile extends FrameLayout {
           mContentTextView.setTextColor(mContentTextColor);
 
           mMainContainerDisabledFrameLayout.setVisibility(View.VISIBLE);
-          drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_check_black);
-          drawable.setColorFilter(ContextCompat.getColor(getContext(), android.R.color.darker_gray), PorterDuff.Mode.SRC_ATOP);
+
+          drawable = ContextCompat.getDrawable(getContext(), mCompletedDisabledIcon);
           break;
         default:
           //Default view
@@ -221,7 +232,7 @@ public class StatusTile extends FrameLayout {
           mTitleTextView.setTextColor(mTitleTextColor);
           mContentTextView.setTextColor(mContentTextColor);
 
-          drawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_edit_black);
+          drawable = ContextCompat.getDrawable(getContext(), mEnabledIcon);
           break;
       }
       //Set the drawable
@@ -315,5 +326,35 @@ public class StatusTile extends FrameLayout {
     mContentTextView.setText(content);
   }
 
+  /**
+   * Get the TextView for the Step
+   * @return the step TextView.
+   */
+  public TextView getStepTextView() {
+    return mStepTextView;
+  }
 
+  /**
+   * Get the TextView for the Title.
+   * @return the title TextView.
+   */
+  public TextView getTitleTextView() {
+    return mTitleTextView;
+  }
+
+  /**
+   * Get the TextView for the Content.
+   * @return the content TextView.
+   */
+  public TextView getContentTextView() {
+    return mContentTextView;
+  }
+
+  /**
+   * The image view for the action (icon).
+   * @return the image view that contains the action (icon).
+   */
+  public ImageView getActionImageView() {
+    return mActionImageView;
+  }
 }

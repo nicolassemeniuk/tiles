@@ -13,6 +13,10 @@
     <attr name="statusTile_stepTextColorDisabled" format="color"/>
     <attr name="statusTile_titleTextColorDisabled" format="color"/>
     <attr name="statusTile_contentTextColorDisabled" format="color"/>
+    <attr name="statusTile_enabledIcon" format="reference"/>
+    <attr name="statusTile_disabledIcon" format="reference"/>
+    <attr name="statusTile_completedIcon" format="reference"/>
+    <attr name="statusTile_completedDisabledIcon" format="reference"/>
   </declare-styleable>
 
   <declare-styleable name="OptionTile">

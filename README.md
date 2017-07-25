@@ -15,7 +15,7 @@ On this library you will find 4 different choices for displaying options:
 For using the library all you have to do is add the following import to
 the project Gradle file:
 
-```
+```java
 compile 'com.nsemeniuk.tiles:tiles:0.0.1'
 ```
 
@@ -45,21 +45,24 @@ You can see how they look below:
 
 For using the tile all you have to do is define it on your XML like:
 
-```
+```xml
     <com.nsemeniuk.tiles.StatusTile
       app:statusTile_contentText="@string/tile_content"
       app:statusTile_stepText="@string/tile_step"
-      app:statusTile_titleText="@string/title_string"
+      app:statusTile_titleText="@string/tile_title"
       app:statusTile_type="enabled"/>
 ```
 
 #### Styling
 
 By default the status tile has black text and the step is highlighted with
-the accent color of the app compat theme. If you want to change it you can set
-the style on your styles.xml file:
+the accent color of the app compat theme. It has a divider for stacking them.
 
-```
+##### Colors
+
+If you want to change it you can set the style on your styles.xml file:
+
+```xml
   <style name="MaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
  
      <item name="statusTile_stepTextColor">@color/colorAccent</item>
@@ -71,4 +74,25 @@ the style on your styles.xml file:
      <item name="statusTile_contentTextColorDisabled">@color/colorPrimaryDisabled</item>
    
   </style>
+```
+
+##### Icons
+
+You can also specify custom icons for each state, setting it on the XML:
+
+```xml
+    <com.nsemeniuk.tiles.StatusTile
+      app:statusTile_enabledIcon="@drawable/ic_my_icon_enabled"
+      app:statusTile_disabledIcon="@drawable/ic_my_icon_disabled"
+      app:statusTile_completedIcon="@drawable/ic_my_icon_completed"
+      app:statusTile_completedDisabledIcon="@drawable/ic_my_icon_completed_disabled"/>
+```
+
+##### Divider
+
+You can also configure if the divider is on or off by setting 
+
+```xml
+    <com.nsemeniuk.tiles.StatusTile
+      app:statusTile_showDivider="false"/>
 ```
