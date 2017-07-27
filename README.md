@@ -16,7 +16,7 @@ For using the library all you have to do is add the following import to
 the project Gradle file:
 
 ```java
-compile 'com.nsemeniuk.tiles:tiles:0.0.1'
+compile 'com.nsemeniuk.tiles:tiles:0.1.0'
 ```
 
 ## Types of Tiles
